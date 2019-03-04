@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Helloworld" class="com.spring.IoC.quickstar.Helloworld.HelloWorld">
+    </bean>
+
+    <bean id="Phone" class="com.spring.IoC.quickstar.Helloworld.Phone">
+        <constructor-arg name="brand" value="IPhoneX"/>
+        <constructor-arg name="price" value="1888"/>
+    </bean>
+    <bean id="Student" class="com.spring.IoC.quickstar.Helloworld.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="22"/>
+        <property name="phone" ref="Phone"/>
+    </bean>
+
+</beans>
