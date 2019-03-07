@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <bean id="hello" class="com.spring.work02.HelloImpl"/>
+      <!--配置一个MyBeforeAdvice前置增强bean-->
+    <bean id="beforeadvice" class="com.spring.work02.MyBeforAdvice"/>
+      <aop:config>
+          <aop:aspect id="before" ref="beforeadvice">
+              <aop:pointcut id="myPointCut" expression="execution(* com.spring.work02.*.*(..))"/>
+              <aop:before method="beforeMethod" pointcut-ref="myPointCut"/>
+          </aop:aspect>
+      </aop:config>
+
+</beans>

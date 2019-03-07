@@ -75,4 +75,21 @@
     </bean>
 
 
+    <bean id="user" class="com.spring.IoC.work02.User">
+        <constructor-arg name="account" value="admin"/>
+        <constructor-arg name="password" value="123"/>
+    </bean>
+    <bean id="userlogin"
+          class="com.spring.IoC.work02.UserLogin">
+        <property name="user" ref="user"/>
+    </bean>
+
+
+
+    <bean id="max" class="com.spring.IoC.work01.Max">
+        <constructor-arg name="a" value="5"/>
+        <constructor-arg name="b" value="3"/>
+    </bean>
+
+
 </beans>

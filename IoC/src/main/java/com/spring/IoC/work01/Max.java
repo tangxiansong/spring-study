@@ -3,19 +3,13 @@ package com.spring.IoC.work01;
 public class Max {
     private int a;
     private int b;
-    public void setB(int b) {
+
+    public Max(int a, int b) {
+        this.a = a;
         this.b = b;
     }
 
-    public int getA() {
-        return a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public int getB() {
-        return b;
+    public int getMax() {
+        return a > b ? a : b;
     }
 }
