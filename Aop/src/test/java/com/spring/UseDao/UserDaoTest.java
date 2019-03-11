@@ -1,4 +1,4 @@
-package com.spring.IoC.work01;
+package com.spring.UseDao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,18 +7,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
-
-//指定单元测试环境
 @RunWith(SpringJUnit4ClassRunner.class)
-//指定配置文件路径
-@ContextConfiguration(locations = {"/beans.xml"})
-public class MaxTest {
-    //自定注入Max
+@ContextConfiguration(locations = {"/bean.xml"})
+public class UserDaoTest {
     @Autowired
-    private Max max;
-
+    private UserDao userDao;
     @Test
-    public void getMax() {
-        assertEquals(5,max.getMax() );
+    public void insert(){
+        userDao.insert();
     }
+
 }

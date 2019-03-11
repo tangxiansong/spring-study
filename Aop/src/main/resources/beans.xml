@@ -3,15 +3,39 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
+<!--配置一个hello的bean-->
   <bean id="hello" class="com.spring.work02.HelloImpl"/>
       <!--配置一个MyBeforeAdvice前置增强bean-->
-    <bean id="beforeadvice" class="com.spring.work02.MyBeforAdvice"/>
+    <bean id="beforeadvice" class="com.spring.work02.MyBeforeAdvice"/>
+    <aop:config>
+    <aop:aspect id="before" ref="beforeadvice">
+        <aop:pointcut id="myPointCut" expression="execution(* com.spring.work02.*.*(..))"/>
+        <aop:before method="beforeMethod" pointcut-ref="myPointCut"/>
+    </aop:aspect>
+    </aop:config>
+
+    <!--配置一个BeforeAdvice的前置增强的bean-->
+    <bean id="beforeAdvice" class="com.spring.work03.BeforeAdvice"/>
+    <!--配置一个UserDAOImpl的bean-->
+    <bean id="userDao" class="com.spring.work03.UserDaoImpl"/>
+    <!--配置aop-->
       <aop:config>
           <aop:aspect id="before" ref="beforeadvice">
-              <aop:pointcut id="myPointCut" expression="execution(* com.spring.work02.*.*(..))"/>
+              <aop:pointcut id="myPointCut" expression="execution(* com.spring.work03.*.*(..))"/>
               <aop:before method="beforeMethod" pointcut-ref="myPointCut"/>
           </aop:aspect>
       </aop:config>
+
+    <!--启动Aspect支持-->
+    <aop:aspectj-autoproxy/>
+    <bean id="fighter" class="com.spring.AspectJ.Fighter"/>
+    <bean id="tiger" class="com.spring.AspectJ.Tiger"/>
+
+
+    <!-- 配置图片相关bean-->
+    <aop:aspectj-autoproxy/>
+    <bean id="imageCopy" class="com.spring.Image.ImageCopy"/>
+    <bean id="imageHandler" class="com.spring.Image.ImageHandler"/>
+
 
 </beans>
